@@ -15,7 +15,7 @@ import com.tencent.mm.sdk.openapi.WXAPIFactory;
 /**
  * @author andli
  * @date 2016年6月15日 下午2:33:00
- * @annotation
+ * @annotation 回调处理页面
  */
 public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 	// IWXAPI：第三方APP和微信通信的接口
@@ -24,7 +24,6 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		// 通过WXAPIFactory工厂，获取IWXAPI的实例
 		api = WXAPIFactory.createWXAPI(this, Constants.APP_ID, false);
 		// 如果分享的时候，该界面没有开启，那么微信开始这个activity时，会调用onCreate，所以这里要处理微信的返回结果
@@ -64,7 +63,8 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 			break;
 		}
 
-		Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+		Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+		// 关闭页面
 		this.finish();
 	}
 }
